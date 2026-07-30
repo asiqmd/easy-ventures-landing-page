@@ -12,9 +12,9 @@ module.exports = {
         sans: ['Manrope', 'sans-serif'],
       },
       colors: {
-        ink: '#0A0A0A',
-        navy: '#071B2A',
-        surface: '#111111',
+        ink: '#FFFFFF',
+        navy: '#EDF1F7',
+        surface: '#F4F6F9',
         electric: '#0066FF',
         safety: '#FF5A00',
         background: 'hsl(var(--background))',

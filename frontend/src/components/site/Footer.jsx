@@ -39,22 +39,22 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-navy">
-      <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[80%] -translate-x-1/2 rounded-full bg-electric/10 blur-[120px]" />
+    <footer className="relative overflow-hidden border-t border-slate-200 bg-[#EDF1F7]">
+      <div className="pointer-events-none absolute -bottom-24 left-1/2 h-64 w-[80%] -translate-x-1/2 rounded-full bg-electric/8 blur-[120px]" />
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Col 1 */}
           <div>
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-8 w-8 items-center justify-center">
-                <span className="absolute inset-0 rotate-45 border border-white/25" />
+                <span className="absolute inset-0 rotate-45 border border-slate-300" />
                 <span className="h-2 w-2 bg-electric" />
               </span>
-              <span className="font-display text-lg font-semibold tracking-tight text-white">
+              <span className="font-display text-lg font-semibold tracking-tight text-slate-900">
                 Easy<span className="text-electric">Ventures</span>
               </span>
             </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-gray-400">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600">
               A diversified group shaping the future of transportation, infrastructure, and technology under one ecosystem.
             </p>
           </div>
@@ -62,14 +62,14 @@ export default function Footer() {
           {/* Cols 2 & 3 */}
           {COLS.map((col) => (
             <div key={col.title}>
-              <h4 className="text-xs uppercase tracking-[0.2em] text-gray-500">{col.title}</h4>
+              <h4 className="text-xs uppercase tracking-[0.2em] text-slate-500">{col.title}</h4>
               <ul className="mt-5 space-y-3">
                 {col.links.map(([label, href]) => (
                   <li key={label}>
                     <button
                       onClick={() => go(href)}
                       data-testid={`footer-link-${label.replace(/\s+/g, "-").toLowerCase()}`}
-                      className="text-sm text-gray-400 transition-colors hover:text-white"
+                      className="text-sm text-slate-600 transition-colors hover:text-slate-900"
                     >
                       {label}
                     </button>
@@ -81,24 +81,24 @@ export default function Footer() {
 
           {/* Col 4 newsletter */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.2em] text-gray-500">Stay in the loop</h4>
-            <p className="mt-5 text-sm text-gray-400">{CONTACT_INFO.email}</p>
+            <h4 className="text-xs uppercase tracking-[0.2em] text-slate-500">Stay in the loop</h4>
+            <p className="mt-5 text-sm text-slate-600">{CONTACT_INFO.email}</p>
             <form onSubmit={subscribe} className="mt-4" data-testid="newsletter-form">
-              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] p-1.5 pl-4">
+              <div className="flex items-center gap-2 rounded-full border border-slate-300 bg-white p-1.5 pl-4">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email"
                   data-testid="newsletter-email"
-                  className="flex-1 bg-transparent text-sm text-white placeholder:text-gray-600 focus:outline-none"
+                  className="flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
                 />
                 <button
                   type="submit"
                   disabled={loading}
                   data-testid="newsletter-submit"
                   data-cursor="hover"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-electric text-white transition-all hover:bg-[#2a80ff] disabled:opacity-60"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-electric text-white transition-all hover:bg-[#0052cc] disabled:opacity-60"
                   aria-label="Subscribe"
                 >
                   <ArrowRight className="h-4 w-4" />
@@ -112,7 +112,7 @@ export default function Footer() {
                   href={s.href}
                   onClick={(e) => e.preventDefault()}
                   data-testid={`footer-social-${s.label.toLowerCase()}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg glass text-gray-300 transition-all hover:bg-electric hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg glass text-slate-600 transition-all hover:bg-electric hover:text-white"
                 >
                   <Icon name={s.icon} className="h-4 w-4" />
                 </a>
@@ -121,11 +121,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-xs text-gray-500">© {new Date().getFullYear()} Easy Ventures. All rights reserved.</p>
-          <div className="flex gap-6 text-xs text-gray-500">
-            <button className="transition-colors hover:text-white" data-testid="footer-privacy">Privacy Policy</button>
-            <button className="transition-colors hover:text-white" data-testid="footer-terms">Terms & Conditions</button>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
+          <p className="text-xs text-slate-500">© {new Date().getFullYear()} Easy Ventures. All rights reserved.</p>
+          <div className="flex gap-6 text-xs text-slate-500">
+            <button className="transition-colors hover:text-slate-900" data-testid="footer-privacy">Privacy Policy</button>
+            <button className="transition-colors hover:text-slate-900" data-testid="footer-terms">Terms & Conditions</button>
           </div>
         </div>
       </div>

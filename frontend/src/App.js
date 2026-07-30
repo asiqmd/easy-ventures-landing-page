@@ -53,7 +53,7 @@ const CustomCursor = () => {
       />
       <div
         ref={ringRef}
-        className="cursor-ring pointer-events-none fixed left-0 top-0 z-[9998] -ml-4 -mt-4 h-8 w-8 rounded-full border border-white/30 transition-[width,height,border-color] duration-200"
+        className="cursor-ring pointer-events-none fixed left-0 top-0 z-[9998] -ml-4 -mt-4 h-8 w-8 rounded-full border border-slate-400/50 transition-[width,height,border-color] duration-200"
       />
       <style>{`
         .cursor-ring.cursor-active { width:56px; height:56px; margin-left:-28px; margin-top:-28px; border-color:#0066FF; }
@@ -64,11 +64,11 @@ const CustomCursor = () => {
 
 function App() {
   return (
-    <div className="App dark">
+    <div className="App">
       <ReactLenis root options={{ lerp: 0.09, smoothWheel: true }}>
         <CustomCursor />
         <Landing />
-        <Toaster position="bottom-right" theme="dark" richColors />
+        <Toaster position="bottom-right" theme="light" richColors />
       </ReactLenis>
     </div>
   );

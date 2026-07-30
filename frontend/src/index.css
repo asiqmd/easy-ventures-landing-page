@@ -7,46 +7,25 @@
 @layer base {
     :root {
         --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
+        --foreground: 222 47% 11%;
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
+        --card-foreground: 222 47% 11%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 6%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 6%;
-        --popover-foreground: 0 0% 98%;
+        --popover-foreground: 222 47% 11%;
         --primary: 214 100% 50%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 0 0% 12%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 12%;
-        --muted-foreground: 0 0% 63.9%;
+        --secondary: 214 32% 95%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 214 32% 95%;
+        --muted-foreground: 215 16% 47%;
         --accent: 214 100% 50%;
         --accent-foreground: 0 0% 100%;
-        --destructive: 0 62.8% 45%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 16%;
-        --input: 0 0% 16%;
+        --destructive: 0 72% 51%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 214 20% 90%;
+        --input: 214 20% 90%;
         --ring: 214 100% 50%;
+        --radius: 0.5rem;
     }
 }
 
@@ -55,7 +34,7 @@
         @apply border-border;
     }
     body {
-        @apply bg-ink text-white;
+        @apply bg-[#F7F8FA] text-slate-900;
         margin: 0;
         font-family: 'Manrope', sans-serif;
         -webkit-font-smoothing: antialiased;
@@ -77,44 +56,33 @@
     .text-balance {
         text-wrap: balance;
     }
+    /* Solid light surfaces (no glass / blur) */
     .glass {
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-        border: 1px solid rgba(255, 255, 255, 0.09);
+        background: #ffffff;
+        border: 1px solid #E6EAF1;
+        box-shadow: 0 10px 30px -16px rgba(10, 37, 64, 0.14);
     }
     .glass-strong {
-        background: rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: #ffffff;
+        border: 1px solid #E2E8F0;
+        box-shadow: 0 22px 50px -22px rgba(10, 37, 64, 0.20);
     }
     .glow-blue {
-        box-shadow: 0 0 40px rgba(0, 102, 255, 0.22);
+        box-shadow: 0 22px 48px -20px rgba(0, 102, 255, 0.40);
     }
     .glow-orange {
-        box-shadow: 0 0 40px rgba(255, 90, 0, 0.18);
+        box-shadow: 0 22px 48px -20px rgba(255, 90, 0, 0.35);
     }
     .text-gradient-blue {
-        background: linear-gradient(120deg, #ffffff 0%, #7fb0ff 55%, #0066ff 100%);
+        background: linear-gradient(120deg, #0A2540 0%, #0066ff 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
-    .grain::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 1;
-        opacity: 0.5;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-        mix-blend-mode: overlay;
-    }
     .grid-lines {
         background-image:
-            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            linear-gradient(to right, rgba(10, 37, 64, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(10, 37, 64, 0.05) 1px, transparent 1px);
         background-size: 48px 48px;
     }
 }
@@ -124,10 +92,10 @@
     width: 10px;
 }
 ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: #EDF1F7;
 }
 ::-webkit-scrollbar-thumb {
-    background: #1c1c1c;
+    background: #C7D2E0;
     border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {

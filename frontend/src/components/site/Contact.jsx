@@ -10,10 +10,10 @@ const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const Field = ({ label, ...props }) => (
   <label className="block">
-    <span className="mb-2 block text-xs uppercase tracking-wider text-gray-400">{label}</span>
+    <span className="mb-2 block text-xs uppercase tracking-wider text-slate-500">{label}</span>
     <input
       {...props}
-      className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+      className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
     />
   </label>
 );
@@ -45,12 +45,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-ink py-28 lg:py-36">
-      <div className="pointer-events-none absolute right-1/4 top-0 h-96 w-96 rounded-full bg-electric/10 blur-[140px]" />
+    <section id="contact" className="relative overflow-hidden bg-white py-28 lg:py-36">
+      <div className="pointer-events-none absolute right-1/4 top-0 h-96 w-96 rounded-full bg-electric/8 blur-[140px]" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <Reveal className="mb-16 max-w-2xl">
           <Overline>Get in touch</Overline>
-          <h2 className="mt-4 font-display text-4xl font-light tracking-tighter text-white sm:text-6xl">
+          <h2 className="mt-4 font-display text-4xl font-light tracking-tighter text-slate-900 sm:text-6xl">
             Let&apos;s build the <span className="text-gradient-blue font-medium">future together</span>
           </h2>
         </Reveal>
@@ -60,17 +60,17 @@ export default function Contact() {
           <Reveal className="flex flex-col gap-8">
             <div className="space-y-6">
               {[
-                { icon: "MapPin", label: "Head office", value: CONTACT_INFO.address, Cmp: MapPin },
-                { icon: "Phone", label: "Phone", value: CONTACT_INFO.phone, Cmp: Phone },
-                { icon: "Mail", label: "Email", value: CONTACT_INFO.email, Cmp: Mail },
+                { label: "Head office", value: CONTACT_INFO.address, Cmp: MapPin },
+                { label: "Phone", value: CONTACT_INFO.phone, Cmp: Phone },
+                { label: "Email", value: CONTACT_INFO.email, Cmp: Mail },
               ].map((c) => (
                 <div key={c.label} className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-electric/10 text-electric">
                     <c.Cmp className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-gray-500">{c.label}</div>
-                    <div className="mt-1 text-white">{c.value}</div>
+                    <div className="text-xs uppercase tracking-wider text-slate-400">{c.label}</div>
+                    <div className="mt-1 text-slate-900">{c.value}</div>
                   </div>
                 </div>
               ))}
@@ -84,18 +84,18 @@ export default function Contact() {
                   onClick={(e) => e.preventDefault()}
                   data-testid={`social-${s.label.toLowerCase()}`}
                   data-cursor="hover"
-                  className="flex h-11 w-11 items-center justify-center rounded-xl glass text-gray-300 transition-all hover:bg-electric hover:text-white"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl glass text-slate-600 transition-all hover:bg-electric hover:text-white"
                 >
                   <Icon name={s.icon} className="h-5 w-5" />
                 </a>
               ))}
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-white/10">
+            <div className="overflow-hidden rounded-2xl border border-slate-200">
               <iframe
                 title="Easy Ventures location"
                 src="https://maps.google.com/maps?q=Dubai&t=&z=11&ie=UTF8&iwloc=&output=embed"
-                className="h-56 w-full grayscale invert-[0.92] contrast-[0.9]"
+                className="h-56 w-full grayscale-[0.25]"
                 loading="lazy"
               />
             </div>
@@ -118,7 +118,7 @@ export default function Contact() {
                 <Field label="Subject" name="subject" value={form.subject} onChange={change} placeholder="How can we help?" data-testid="contact-subject" />
               </div>
               <label className="mt-5 block">
-                <span className="mb-2 block text-xs uppercase tracking-wider text-gray-400">Message *</span>
+                <span className="mb-2 block text-xs uppercase tracking-wider text-slate-500">Message *</span>
                 <textarea
                   name="message"
                   value={form.message}
@@ -126,7 +126,7 @@ export default function Contact() {
                   rows={5}
                   data-testid="contact-message"
                   placeholder="Tell us about your project..."
-                  className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-gray-600 transition-colors focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+                  className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
                 />
               </label>
               <button
@@ -134,7 +134,7 @@ export default function Contact() {
                 disabled={loading}
                 data-testid="contact-submit"
                 data-cursor="hover"
-                className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-electric px-7 py-4 text-sm font-medium text-white transition-all hover:bg-[#2a80ff] hover:glow-blue disabled:opacity-60"
+                className="group mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-electric px-7 py-4 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue disabled:opacity-60"
               >
                 {loading ? (
                   <>
