@@ -7,12 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+      fontFamily: {
+        display: ['Outfit', 'sans-serif'],
+        sans: ['Manrope', 'sans-serif'],
       },
       colors: {
+        ink: '#0A0A0A',
+        navy: '#071B2A',
+        surface: '#111111',
+        electric: '#0066FF',
+        safety: '#FF5A00',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -54,27 +58,39 @@ module.exports = {
           '5': 'hsl(var(--chart-5))'
         }
       },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
+      },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0'
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)'
-          }
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)'
-          },
-          to: {
-            height: '0'
-          }
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' }
+        },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-24px)' }
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '0.35' },
+          '50%': { opacity: '0.7' }
+        },
+        'grid-flow': {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '48px 48px' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'float-slow': 'float-slow 8s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 5s ease-in-out infinite',
+        'grid-flow': 'grid-flow 6s linear infinite'
       }
     }
   },
