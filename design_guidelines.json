@@ -1,0 +1,144 @@
+{
+  "theme": "dark",
+  "typography": {
+    "headings": {
+      "family": "Outfit, sans-serif",
+      "import_url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap",
+      "weights": ["300 (Light)", "500 (Medium)", "700 (Bold)"],
+      "rules": "Must use tight letter spacing (tracking-tight or tracking-tighter). No 'Inter' for headings. Never default to standard Bold, use Light or Black for extreme contrast."
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "import_url": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap",
+      "rules": "Clean, geometric legibility. Use text-gray-300 or text-gray-400 for secondary text to ensure high contrast against the dark background."
+    }
+  },
+  "colors": {
+    "background": {
+      "primary": "#0A0A0A",
+      "secondary": "#071B2A",
+      "surface": "#111111",
+      "glass": "rgba(255, 255, 255, 0.03)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#9CA3AF",
+      "muted": "#4B5563"
+    },
+    "accents": {
+      "electric_blue": "#0066FF",
+      "safety_orange": "#FF5A00"
+    },
+    "rules": "No generic full-screen gradients. Deep obsidian/navy anchors with high-saturation accent blocks. Tints of blue in grays. Avoid fully transparent overlays; use glassmorphism with 1px border-white/10."
+  },
+  "visual_enhancers": {
+    "surfaces": [
+      "Glassmorphism (The Crystal Variant): bg-white/5 backdrop-blur-xl border border-white/10. Use for Sticky Headers and Brand Cards.",
+      "Grid Borders: border-collapse, subtle borders on right and bottom of items for data-heavy sections.",
+      "Noise Texture: Subtle SVG noise overlay to break the digital flatness."
+    ],
+    "shadows": [
+      "No soft diffuse shadows. Use sharp 1px inner highlights and deep ambient glows (0 0 40px rgba(0,102,255,0.15))"
+    ],
+    "motion": [
+      "Lenis smooth scrolling is MANDATORY.",
+      "Masked line-by-line text reveal on hero load.",
+      "Scroll-triggered micro-interactions (y: 40 to 0, opacity 0 to 1).",
+      "Hover/expand cards: Use layoutId or width expansions for interactive brand cards."
+    ]
+  },
+  "layouts": {
+    "spacing": "Generous. Use p-12, p-16, py-32 for sections. Never cramp content.",
+    "grid": "Bento Protocol Mode A. Asymmetrical grids, grid-cols-12 for complex layouts. Use col-span-full for impact."
+  },
+  "components": {
+    "buttons": "Sharp edges (rounded-none) or very subtle rounding (rounded-sm). Background electric_blue, hover state must lighten slightly with a glow effect.",
+    "cards": "Cardless or Glass cards. No default Shadcn white cards.",
+    "badges": "Overlines must be uppercase, text-xs, tracking-[0.2em] font-medium."
+  },
+  "media": {
+    "image_rules": "Max height 80vh on mobile. Wrap hero images in bg-black/40 to ensure contrast. Use grayscale + hover color for team members to maintain enterprise vibe."
+  },
+  "image_urls": {
+    "hero_parallax": {
+      "url": "https://images.unsplash.com/photo-1771182253516-ffc7c1bee56e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBsb2dpc3RpY3MlMjB0cnVjayUyMGhpZ2h3YXklMjBzdW5zZXR8ZW58MHx8fHwxNzg1NDA3NjU5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Sunset road with vehicles - kinetic hero parallax background.",
+      "category": "Hero"
+    },
+    "timeline_logistics": {
+       "url": "https://images.unsplash.com/photo-1696110581291-16c49b7df77e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBsb2dpc3RpY3MlMjB0cnVjayUyMGhpZ2h3YXklMjBzdW5zZXR8ZW58MHx8fHwxNzg1NDA3NjU5fDA&ixlib=rb-4.1.0&q=85",
+       "description": "Truck driving down highway - 'Shaping Transportation' storytelling timeline.",
+       "category": "Storytelling"
+    },
+    "infrastructure_bridge": {
+        "url": "https://images.unsplash.com/photo-1569924291145-12a05f455966?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsb2dpc3RpY3MlMjB0cnVjayUyMGhpZ2h3YXklMjBzdW5zZXR8ZW58MHx8fHwxNzg1NDA3NjU5fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Concrete bridge infrastructure - 'Easy Brick' section or Mission.",
+        "category": "Construction"
+    },
+    "leadership_team": [
+      {
+        "url": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHBvcnRyYWl0fGVufDB8fHx8MTc4NTQwNzY1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Male Executive 1"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHBvcnRyYWl0fGVufDB8fHx8MTc4NTQwNzY1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Female Executive 1"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1676989880361-091e12efc056?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHBvcnRyYWl0fGVufDB8fHx8MTc4NTQwNzY1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Male Executive 2"
+      },
+      {
+        "url": "https://images.pexels.com/photos/27086922/pexels-photo-27086922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Female Executive 2"
+      }
+    ],
+    "office_culture": [
+      {
+        "url": "https://images.unsplash.com/photo-1758518731468-98e90ffd7430?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHw0fHxjb3Jwb3JhdGUlMjBvZmZpY2UlMjBhcmNoaXRlY3R1cmUlMjB0ZWFtfGVufDB8fHx8MTc4NTQwNzY1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Corporate architecture team"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBvZmZpY2UlMjBhcmNoaXRlY3R1cmUlMjB0ZWFtfGVufDB8fHx8MTc4NTQwNzY1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Team collaborating"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1758691737124-05c5bffe46f0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwyfHxjb3Jwb3JhdGUlMjBvZmZpY2UlMjBhcmNoaXRlY3R1cmUlMjB0ZWFtfGVufDB8fHx8MTc4NTQwNzY1OXww&ixlib=rb-4.1.0&q=85",
+        "description": "Team around laptop"
+      }
+    ]
+  },
+  "3d_libraries": {
+    "recommendation": "Use framer-motion heavily. No complex 3D needed, rely on high-fidelity CSS and parallax.",
+    "parallax": "Use framer-motion (useScroll and useTransform) for scroll-based parallax on the hero image."
+  },
+  "instructions_to_main_agent": [
+    "Build as a single-page app with smooth scroll anchors. Setup @studio-freight/react-lenis at the root layout.",
+    "Install framer-motion, lucide-react, react-fast-marquee, react-countup.",
+    "(1) Hero Section: Implement a masked line-by-line reveal for 'Building the Future of...' using Framer Motion (overflow-hidden wrapper with y: '100%' to '0%'). Add animated statistics counters using react-countup. Use hero_parallax image.",
+    "(2) Brands Section: Create premium animated glass cards. On hover, the cards should slightly expand and reveal a 'Discover more' arrow.",
+    "(3) Storytelling: Implement a sticky left column containing the timeline/map, while the right column scrolls through features. Ensure seamless Framer Motion transitions.",
+    "(4) Mission & Vision: Split screen with animated slow-moving gradient mesh background on one side.",
+    "(5) Leadership: Use CSS grid. Apply a grayscale filter on images by default, transitioning to full color on hover. Include LinkedIn icons.",
+    "(6) Office & Culture: Create an asymmetrical masonry/bento grid gallery. Implement hover zoom (scale-105) on images.",
+    "(7 & 8) Dashboards (Easy Truck / Easy Brick): Build realistic-looking CSS mockups (not just images) of dashboards within glass-morphic containers to represent the technology. Overlay glowing tech metrics.",
+    "(9) Why Choose Us: 4 feature cards with animated lucide-react icons and react-countup counters.",
+    "(10) Testimonials: Use react-fast-marquee for a premium auto-sliding review section with glass cards.",
+    "(11 & 12) Contact & Footer: Massive padding (py-32). Two column contact form. Premium dark footer.",
+    "Never use pure transparent backgrounds for overlays; use bg-black/40 to bg-black/60 to guarantee text readability.",
+    "Add data-testid attributes to all buttons, links, and forms."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN."
+  ]
+}
