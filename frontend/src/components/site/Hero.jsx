@@ -50,7 +50,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-safety/10 blur-[120px]" />
       <Particles />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-10 lg:pb-0 lg:pt-16">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-10 lg:pb-24 lg:pt-16">
         {/* Left: copy */}
         <div>
           <motion.div
@@ -150,7 +150,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.25, duration: 0.8 }}
-        className="relative z-10 mx-auto -mt-2 max-w-7xl px-4 pb-16 sm:px-6 lg:px-10"
+        className="relative z-10 mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-10"
       >
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {t.hero.metrics.map((m) => (
