@@ -18,10 +18,10 @@ export default function Transportation() {
         </Reveal>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Sticky visual + timeline */}
-          <div className="lg:sticky lg:top-28 lg:h-fit">
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200 shadow-[0_30px_60px_-30px_rgba(10,37,64,0.3)]">
-              <img src={IMAGES.truck} alt="" className="h-80 w-full object-cover sm:h-[420px]" />
+          {/* Sticky visual */}
+          <div className="lg:sticky lg:top-28">
+            <div className="relative h-[480px] overflow-hidden rounded-3xl border border-slate-200 shadow-[0_30px_60px_-30px_rgba(10,37,64,0.3)] sm:h-[560px] lg:h-[720px]">
+              <img src={IMAGES.truck} alt="" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between rounded-2xl bg-white/90 px-5 py-4 backdrop-blur-md">
                 <div>
@@ -32,15 +32,6 @@ export default function Transportation() {
                   <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" /> {t.common.online}
                 </span>
               </div>
-            </div>
-
-            <div className="mt-8 space-y-6 border-l border-slate-200 pl-6">
-              {t.transport.timeline.map((line, i) => (
-                <div key={i} className="relative">
-                  <span className="absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full bg-electric ring-4 ring-[#EDF1F7]" />
-                  <p className="text-sm text-slate-700">{line}</p>
-                </div>
-              ))}
             </div>
           </div>
 
