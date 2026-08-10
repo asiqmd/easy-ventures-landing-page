@@ -2,8 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { ArrowUpRight, Plus } from "lucide-react";
-import { BRANDS } from "@/data/content";
 import { Icon, Overline, Reveal } from "@/components/site/primitives";
+import { BRANDS_STATIC } from "@/i18n/translations";
+import { useT } from "@/i18n/LanguageContext";
 
 const TARGETS = {
   "easy-truck": "#easy-truck",
@@ -11,13 +12,14 @@ const TARGETS = {
   "netro-systems": "#transportation",
 };
 
-const BrandCard = ({ brand, index }) => {
+const BrandCard = ({ brand, index, t }) => {
   const [open, setOpen] = useState(false);
   const lenis = useLenis();
   const go = (href) => {
     const el = document.querySelector(href);
     if (el && lenis) lenis.scrollTo(el, { offset: -20, duration: 1.4 });
   };
+  const copy = t.brands.items[brand.id];
 
   return (
     <motion.div
@@ -33,7 +35,7 @@ const BrandCard = ({ brand, index }) => {
       <div className="relative h-56 overflow-hidden">
         <img
           src={brand.image}
-          alt={brand.name}
+          alt={copy.name}
           className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent" />
@@ -47,10 +49,10 @@ const BrandCard = ({ brand, index }) => {
 
       <div className="flex flex-1 flex-col p-7">
         <span className="text-xs uppercase tracking-[0.2em]" style={{ color: brand.accent }}>
-          {brand.tag}
+          {copy.tag}
         </span>
-        <h3 className="mt-2 font-display text-2xl font-medium tracking-tight text-slate-900">{brand.name}</h3>
-        <p className="mt-3 text-sm leading-relaxed text-slate-600">{brand.description}</p>
+        <h3 className="mt-2 font-display text-2xl font-medium tracking-tight text-slate-900">{copy.name}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-slate-600">{copy.description}</p>
 
         <AnimatePresence initial={false}>
           {open && (
@@ -61,7 +63,7 @@ const BrandCard = ({ brand, index }) => {
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="mt-4 flex flex-col gap-2 overflow-hidden"
             >
-              {brand.points.map((p) => (
+              {copy.points.map((p) => (
                 <li key={p} className="flex items-center gap-2 text-sm text-slate-700">
                   <span className="h-1.5 w-1.5" style={{ background: brand.accent }} />
                   {p}
@@ -80,7 +82,7 @@ const BrandCard = ({ brand, index }) => {
             data-testid={`brand-learn-${brand.id}`}
             className="group/btn flex items-center gap-1.5 text-sm font-medium text-slate-900"
           >
-            Learn More
+            {t.common.learnMore}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
           </button>
           <span
@@ -96,26 +98,25 @@ const BrandCard = ({ brand, index }) => {
 };
 
 export default function Brands() {
+  const t = useT();
   return (
     <section id="brands" className="relative bg-white py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
-            <Overline>Our Portfolio</Overline>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl font-light leading-tight tracking-tighter text-slate-900 sm:text-6xl">
-              Brands Powering <span className="text-gradient-blue font-medium">Tomorrow</span>
+            <Overline>{t.brands.overline}</Overline>
+            <h2 className="mt-4 max-w-2xl font-display text-4xl font-light leading-tight tracking-tight text-slate-900 sm:text-6xl">
+              {t.brands.titleBefore}<span className="text-gradient-blue font-medium">{t.brands.titleAccent}</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="max-w-sm text-sm text-slate-600">
-              Three specialised companies, one shared standard of excellence. Tap a card to explore what each brand delivers.
-            </p>
+            <p className="max-w-sm text-sm text-slate-600">{t.brands.intro}</p>
           </Reveal>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {BRANDS.map((b, i) => (
-            <BrandCard key={b.id} brand={b} index={i} />
+          {BRANDS_STATIC.map((b, i) => (
+            <BrandCard key={b.id} brand={b} index={i} t={t} />
           ))}
         </div>
       </div>

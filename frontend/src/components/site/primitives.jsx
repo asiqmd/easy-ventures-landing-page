@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 import * as Icons from "lucide-react";
 import { fadeUp, stagger, viewport } from "@/lib/motion";
+import { useLanguage, toBnDigits } from "@/i18n/LanguageContext";
 
 export const Icon = ({ name, className }) => {
   const Cmp = Icons[name] || Icons.Circle;
@@ -43,12 +44,25 @@ export const RevealGroup = ({ children, className = "" }) => (
   </motion.div>
 );
 
-export const Counter = ({ value, suffix = "", className = "" }) => {
+export const Counter = ({ value, suffix = "", decimals = 0, className = "" }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
+  const { lang } = useLanguage();
+  const locale = lang === "bn" ? "bn-BD" : "en-US";
+  const formatter = (v) => {
+    const s = v.toLocaleString(locale, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals,
+    });
+    return lang === "bn" ? toBnDigits(s) : s;
+  };
   return (
     <span ref={ref} className={className}>
-      {inView ? <CountUp end={value} duration={2.2} separator="," /> : 0}
+      {inView ? (
+        <CountUp end={value} duration={2.2} decimals={decimals} formattingFn={formatter} />
+      ) : (
+        formatter(0)
+      )}
       {suffix}
     </span>
   );

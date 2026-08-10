@@ -2,15 +2,10 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { ArrowRight, ArrowDown } from "lucide-react";
-import { IMAGES, HERO_METRICS } from "@/data/content";
+import { IMAGES } from "@/data/content";
 import { maskLine } from "@/lib/motion";
 import { Counter } from "@/components/site/primitives";
-
-const HEADLINE = [
-  "Building the Future of",
-  "Transportation, Infrastructure",
-  "& Technology",
-];
+import { useT } from "@/i18n/LanguageContext";
 
 const Particles = () => {
   const dots = Array.from({ length: 20 });
@@ -38,6 +33,7 @@ const Particles = () => {
 export default function Hero() {
   const ref = useRef(null);
   const lenis = useLenis();
+  const t = useT();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const imgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
@@ -64,14 +60,18 @@ export default function Hero() {
             className="mb-6 flex items-center gap-3"
           >
             <span className="h-px w-10 bg-electric" />
-            <span className="text-xs uppercase tracking-[0.3em] text-slate-500">The Easy Ventures Group</span>
+            <span className="text-xs uppercase tracking-[0.3em] text-slate-500">{t.hero.overline}</span>
           </motion.div>
 
-          <h1 className="font-display text-4xl font-light leading-[1.03] tracking-tighter text-slate-900 sm:text-5xl lg:text-[4.4rem]">
-            {HEADLINE.map((line, i) => (
+          <h1 className="font-display text-4xl font-light leading-[1.08] tracking-tight text-slate-900 sm:text-5xl lg:text-[4.2rem]">
+            {t.hero.headline.map((line, i) => (
               <span key={i} className="block overflow-hidden py-1">
                 <motion.span custom={i} variants={maskLine} initial="hidden" animate="show" className="block">
-                  {i === 2 ? <span className="text-gradient-blue font-medium">{line}</span> : line}
+                  {i === t.hero.headline.length - 1 ? (
+                    <span className="text-gradient-blue font-medium">{line}</span>
+                  ) : (
+                    line
+                  )}
                 </motion.span>
               </span>
             ))}
@@ -83,8 +83,7 @@ export default function Hero() {
             transition={{ delay: 0.9, duration: 0.7 }}
             className="mt-7 max-w-lg text-base text-slate-600 sm:text-lg"
           >
-            Easy Ventures unites innovative companies transforming industries through logistics,
-            construction, and digital excellence.
+            {t.hero.sub}
           </motion.p>
 
           <motion.div
@@ -99,7 +98,7 @@ export default function Hero() {
               data-cursor="hover"
               className="group flex items-center gap-2 rounded-full bg-electric px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue"
             >
-              Explore Our Brands
+              {t.hero.ctaExplore}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
             </button>
             <button
@@ -108,7 +107,7 @@ export default function Hero() {
               data-cursor="hover"
               className="rounded-full border border-slate-300 px-7 py-3.5 text-sm font-medium text-slate-900 transition-all hover:border-slate-900 hover:bg-slate-50"
             >
-              Contact Us
+              {t.hero.ctaContact}
             </button>
           </motion.div>
         </div>
@@ -124,7 +123,7 @@ export default function Hero() {
             <motion.img
               style={{ y: imgY, scale: imgScale }}
               src={IMAGES.heroParallax}
-              alt="Logistics at sunset"
+              alt={t.hero.overline}
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
@@ -135,11 +134,11 @@ export default function Hero() {
               className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-2xl bg-white/90 px-5 py-4 backdrop-blur-md"
             >
               <div>
-                <div className="text-xs uppercase tracking-wider text-slate-500">Live network</div>
-                <div className="font-display text-lg text-slate-900">140 cities connected</div>
+                <div className="text-xs uppercase tracking-wider text-slate-500">{t.common.liveNetwork}</div>
+                <div className="font-display text-lg text-slate-900">{t.common.citiesConnectedShort}</div>
               </div>
               <span className="flex items-center gap-2 text-xs font-medium text-emerald-600">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" /> Online
+                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" /> {t.common.online}
               </span>
             </motion.div>
           </div>
@@ -154,7 +153,7 @@ export default function Hero() {
         className="relative z-10 mx-auto -mt-2 max-w-7xl px-4 pb-16 sm:px-6 lg:px-10"
       >
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {HERO_METRICS.map((m) => (
+          {t.hero.metrics.map((m) => (
             <div key={m.label} className="rounded-2xl glass px-5 py-6" data-testid={`hero-metric-${m.label}`}>
               <div className="font-display text-3xl font-light tracking-tight text-slate-900 lg:text-4xl">
                 <Counter value={m.value} suffix={m.suffix} />

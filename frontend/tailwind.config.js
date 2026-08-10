@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Outfit', 'sans-serif'],
-        sans: ['Manrope', 'sans-serif'],
+        display: ['Outfit', 'Baloo Da 2', 'Hind Siliguri', 'sans-serif'],
+        sans: ['Manrope', 'Hind Siliguri', 'sans-serif'],
       },
       colors: {
         ink: '#FFFFFF',

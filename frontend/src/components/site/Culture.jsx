@@ -1,26 +1,28 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { CULTURE_GALLERY } from "@/data/content";
 import { Overline, Reveal } from "@/components/site/primitives";
+import { CULTURE_TILES } from "@/i18n/translations";
+import { useT } from "@/i18n/LanguageContext";
 
 export default function Culture() {
   const [active, setActive] = useState(null);
+  const t = useT();
 
   return (
     <section id="culture" className="relative bg-white py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <Reveal>
-            <Overline>Office & Culture</Overline>
-            <h2 className="mt-4 max-w-xl font-display text-4xl font-light leading-tight tracking-tighter text-slate-900 sm:text-5xl">
-              We believe great companies are built by <span className="text-gradient-blue font-medium">great people</span>
+            <Overline>{t.culture.overline}</Overline>
+            <h2 className="mt-4 max-w-xl font-display text-4xl font-light leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              {t.culture.titleBefore}<span className="text-gradient-blue font-medium">{t.culture.titleAccent}</span>
             </h2>
           </Reveal>
         </div>
 
         <div className="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-4">
-          {CULTURE_GALLERY.map((img, i) => (
+          {CULTURE_TILES.map((img, i) => (
             <motion.button
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -34,12 +36,12 @@ export default function Culture() {
             >
               <img
                 src={img.src}
-                alt={img.alt}
+                alt={t.culture.alts[i] || ""}
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-slate-900/0 transition-colors group-hover:bg-slate-900/40" />
               <span className="absolute bottom-4 left-4 text-left text-sm font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {img.alt}
+                {t.culture.alts[i]}
               </span>
             </motion.button>
           ))}

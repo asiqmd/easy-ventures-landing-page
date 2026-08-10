@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { NAV_LINKS } from "@/data/content";
+import { useT } from "@/i18n/LanguageContext";
+import LangSwitch from "@/components/site/LangSwitch";
 
 const Logo = ({ onClick }) => (
   <button onClick={onClick} data-testid="nav-logo" className="group flex items-center gap-2.5" data-cursor="hover">
@@ -17,6 +18,7 @@ const Logo = ({ onClick }) => (
 );
 
 export default function Navbar() {
+  const t = useT();
   const lenis = useLenis();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -48,8 +50,8 @@ export default function Navbar() {
           }`}
         >
           <Logo onClick={() => go("#hero")} />
-          <nav className="hidden items-center gap-8 lg:flex">
-            {NAV_LINKS.map((l) => (
+          <nav className="hidden items-center gap-7 lg:flex">
+            {t.nav.map((l) => (
               <button
                 key={l.href}
                 onClick={() => go(l.href)}
@@ -63,13 +65,14 @@ export default function Navbar() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
+            <LangSwitch className="hidden sm:inline-flex" />
             <button
               onClick={() => go("#contact")}
               data-testid="nav-contact-btn"
               data-cursor="hover"
               className="hidden items-center gap-1.5 rounded-full bg-electric px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue sm:flex"
             >
-              Contact <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+              {t.common.contact} <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
             </button>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -92,7 +95,7 @@ export default function Navbar() {
             className="fixed inset-0 z-40 bg-white/97 backdrop-blur-xl lg:hidden"
           >
             <nav className="flex h-full flex-col items-start justify-center gap-6 px-10">
-              {NAV_LINKS.map((l, i) => (
+              {t.nav.map((l, i) => (
                 <motion.button
                   key={l.href}
                   initial={{ opacity: 0, x: -30 }}
@@ -105,6 +108,7 @@ export default function Navbar() {
                   {l.label}
                 </motion.button>
               ))}
+              <div className="mt-6"><LangSwitch /></div>
             </nav>
           </motion.div>
         )}

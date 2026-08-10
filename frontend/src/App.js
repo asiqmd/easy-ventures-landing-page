@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "@/App.css";
 import { ReactLenis } from "lenis/react";
 import { Toaster } from "@/components/ui/sonner";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 import Landing from "@/pages/Landing";
 
 // Custom cursor with magnetic glow
@@ -65,11 +66,13 @@ const CustomCursor = () => {
 function App() {
   return (
     <div className="App">
-      <ReactLenis root options={{ lerp: 0.09, smoothWheel: true }}>
-        <CustomCursor />
-        <Landing />
-        <Toaster position="bottom-right" theme="light" richColors />
-      </ReactLenis>
+      <LanguageProvider>
+        <ReactLenis root options={{ lerp: 0.09, smoothWheel: true }}>
+          <CustomCursor />
+          <Landing />
+          <Toaster position="bottom-right" theme="light" richColors />
+        </ReactLenis>
+      </LanguageProvider>
     </div>
   );
 }

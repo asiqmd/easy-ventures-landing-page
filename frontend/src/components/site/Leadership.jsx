@@ -1,22 +1,24 @@
 import { motion } from "framer-motion";
 import { Linkedin, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { LEADERS } from "@/data/content";
 import { Overline, Reveal } from "@/components/site/primitives";
+import { LEADER_ASSETS } from "@/i18n/translations";
+import { useT } from "@/i18n/LanguageContext";
 
 export default function Leadership() {
+  const t = useT();
   return (
     <section id="team" className="relative bg-[#EDF1F7] py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <Reveal className="mb-16 max-w-2xl">
-          <Overline>Leadership</Overline>
-          <h2 className="mt-4 font-display text-4xl font-light tracking-tighter text-slate-900 sm:text-6xl">
-            Meet the people behind <span className="text-gradient-blue font-medium">Easy Ventures</span>
+          <Overline>{t.leadership.overline}</Overline>
+          <h2 className="mt-4 font-display text-4xl font-light tracking-tight text-slate-900 sm:text-6xl">
+            {t.leadership.titleBefore}<span className="text-gradient-blue font-medium">{t.leadership.titleAccent}</span>
           </h2>
         </Reveal>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {LEADERS.map((p, i) => (
+          {t.leadership.leaders.map((p, i) => (
             <motion.div
               key={p.name}
               initial={{ opacity: 0, y: 40 }}
@@ -29,7 +31,7 @@ export default function Leadership() {
             >
               <div className="relative h-72 overflow-hidden">
                 <img
-                  src={p.image}
+                  src={LEADER_ASSETS[i]}
                   alt={p.name}
                   className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                 />
@@ -54,12 +56,12 @@ export default function Leadership() {
 
         <Reveal className="mt-14 flex justify-center">
           <button
-            onClick={() => toast("Full team directory coming soon", { description: "We're preparing 2,400+ profiles." })}
+            onClick={() => toast(t.leadership.toastTitle, { description: t.leadership.toastDesc })}
             data-testid="see-full-team-btn"
             data-cursor="hover"
             className="group flex items-center gap-2 rounded-full border border-slate-300 px-7 py-3.5 text-sm font-medium text-slate-900 transition-all hover:border-electric hover:bg-electric/10"
           >
-            See Full Team
+            {t.leadership.seeFull}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </button>
         </Reveal>

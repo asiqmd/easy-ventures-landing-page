@@ -3,8 +3,9 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { MapPin, Phone, Mail, Send, Loader2 } from "lucide-react";
-import { CONTACT_INFO } from "@/data/content";
 import { Icon, Overline, Reveal } from "@/components/site/primitives";
+import { SOCIALS } from "@/i18n/translations";
+import { useT } from "@/i18n/LanguageContext";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -21,6 +22,7 @@ const Field = ({ label, ...props }) => (
 const empty = { full_name: "", company: "", email: "", phone: "", subject: "", message: "" };
 
 export default function Contact() {
+  const t = useT();
   const [form, setForm] = useState(empty);
   const [loading, setLoading] = useState(false);
 
@@ -29,16 +31,16 @@ export default function Contact() {
   const submit = async (e) => {
     e.preventDefault();
     if (!form.full_name || !form.email || !form.message) {
-      toast.error("Please fill in your name, email and message.");
+      toast.error(t.contact.form.requiredErr);
       return;
     }
     setLoading(true);
     try {
-      const { data } = await axios.post(`${API}/contact`, form);
-      toast.success(data.message || "Message sent!");
+      await axios.post(`${API}/contact`, form);
+      toast.success(t.contact.form.successMsg);
       setForm(empty);
-    } catch (err) {
-      toast.error(err?.response?.data?.detail || "Something went wrong. Please try again.");
+    } catch {
+      toast.error(t.contact.form.genericErr);
     } finally {
       setLoading(false);
     }
@@ -49,9 +51,9 @@ export default function Contact() {
       <div className="pointer-events-none absolute right-1/4 top-0 h-96 w-96 rounded-full bg-electric/8 blur-[140px]" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <Reveal className="mb-16 max-w-2xl">
-          <Overline>Get in touch</Overline>
-          <h2 className="mt-4 font-display text-4xl font-light tracking-tighter text-slate-900 sm:text-6xl">
-            Let&apos;s build the <span className="text-gradient-blue font-medium">future together</span>
+          <Overline>{t.contact.overline}</Overline>
+          <h2 className="mt-4 font-display text-4xl font-light tracking-tight text-slate-900 sm:text-6xl">
+            {t.contact.titleBefore}<span className="text-gradient-blue font-medium">{t.contact.titleAccent}</span>
           </h2>
         </Reveal>
 
@@ -60,9 +62,9 @@ export default function Contact() {
           <Reveal className="flex flex-col gap-8">
             <div className="space-y-6">
               {[
-                { label: "Head office", value: CONTACT_INFO.address, Cmp: MapPin },
-                { label: "Phone", value: CONTACT_INFO.phone, Cmp: Phone },
-                { label: "Email", value: CONTACT_INFO.email, Cmp: Mail },
+                { label: t.contact.labels.office, value: t.contact.info.address, Cmp: MapPin },
+                { label: t.contact.labels.phone, value: t.contact.info.phone, Cmp: Phone },
+                { label: t.contact.labels.email, value: t.contact.info.email, Cmp: Mail },
               ].map((c) => (
                 <div key={c.label} className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-electric/10 text-electric">
@@ -77,7 +79,7 @@ export default function Contact() {
             </div>
 
             <div className="flex gap-3">
-              {CONTACT_INFO.socials.map((s) => (
+              {SOCIALS.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
@@ -109,23 +111,23 @@ export default function Contact() {
               className="rounded-3xl glass-strong p-7 sm:p-10"
             >
               <div className="grid gap-5 sm:grid-cols-2">
-                <Field label="Full name *" name="full_name" value={form.full_name} onChange={change} placeholder="Jane Doe" data-testid="contact-full-name" />
-                <Field label="Company" name="company" value={form.company} onChange={change} placeholder="Acme Inc." data-testid="contact-company" />
-                <Field label="Email *" name="email" type="email" value={form.email} onChange={change} placeholder="jane@acme.com" data-testid="contact-email" />
-                <Field label="Phone" name="phone" value={form.phone} onChange={change} placeholder="+1 000 000 0000" data-testid="contact-phone" />
+                <Field label={t.contact.form.fullName} name="full_name" value={form.full_name} onChange={change} placeholder={t.contact.form.fullNamePh} data-testid="contact-full-name" />
+                <Field label={t.contact.form.company} name="company" value={form.company} onChange={change} placeholder={t.contact.form.companyPh} data-testid="contact-company" />
+                <Field label={t.contact.form.email} name="email" type="email" value={form.email} onChange={change} placeholder={t.contact.form.emailPh} data-testid="contact-email" />
+                <Field label={t.contact.form.phone} name="phone" value={form.phone} onChange={change} placeholder={t.contact.form.phonePh} data-testid="contact-phone" />
               </div>
               <div className="mt-5">
-                <Field label="Subject" name="subject" value={form.subject} onChange={change} placeholder="How can we help?" data-testid="contact-subject" />
+                <Field label={t.contact.form.subject} name="subject" value={form.subject} onChange={change} placeholder={t.contact.form.subjectPh} data-testid="contact-subject" />
               </div>
               <label className="mt-5 block">
-                <span className="mb-2 block text-xs uppercase tracking-wider text-slate-500">Message *</span>
+                <span className="mb-2 block text-xs uppercase tracking-wider text-slate-500">{t.contact.form.message}</span>
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={change}
                   rows={5}
                   data-testid="contact-message"
-                  placeholder="Tell us about your project..."
+                  placeholder={t.contact.form.messagePh}
                   className="w-full resize-none rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition-colors focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
                 />
               </label>
@@ -138,11 +140,11 @@ export default function Contact() {
               >
                 {loading ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin" /> Sending...
+                    <Loader2 className="h-4 w-4 animate-spin" /> {t.contact.form.sending}
                   </>
                 ) : (
                   <>
-                    Send Message
+                    {t.contact.form.submit}
                     <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </>
                 )}

@@ -3,17 +3,15 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useLenis } from "lenis/react";
 import { ArrowRight } from "lucide-react";
-import { CONTACT_INFO } from "@/data/content";
 import { Icon } from "@/components/site/primitives";
+import { SOCIALS } from "@/i18n/translations";
+import { useT, toBnDigits, useLanguage } from "@/i18n/LanguageContext";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
-const COLS = [
-  { title: "Company", links: [["About Us", "#mission"], ["Mission", "#mission"], ["Vision", "#mission"], ["Team", "#team"]] },
-  { title: "Brands", links: [["Easy Truck", "#easy-truck"], ["Easy Brick", "#easy-brick"], ["Netro Systems", "#brands"]] },
-];
-
 export default function Footer() {
+  const t = useT();
+  const { lang } = useLanguage();
   const lenis = useLenis();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,18 +23,21 @@ export default function Footer() {
 
   const subscribe = async (e) => {
     e.preventDefault();
-    if (!email) return toast.error("Please enter your email.");
+    if (!email) return toast.error(t.footer.newsletterEmptyErr);
     setLoading(true);
     try {
-      const { data } = await axios.post(`${API}/newsletter`, { email });
-      toast.success(data.message || "Subscribed!");
+      await axios.post(`${API}/newsletter`, { email });
+      toast.success(t.footer.newsletterSuccess);
       setEmail("");
-    } catch (err) {
-      toast.error(err?.response?.data?.detail || "Subscription failed. Try again.");
+    } catch {
+      toast.error(t.footer.newsletterGenericErr);
     } finally {
       setLoading(false);
     }
   };
+
+  const year = new Date().getFullYear();
+  const yearStr = lang === "bn" ? toBnDigits(year) : year;
 
   return (
     <footer className="relative overflow-hidden border-t border-slate-200 bg-[#EDF1F7]">
@@ -54,13 +55,11 @@ export default function Footer() {
                 Easy<span className="text-electric">Ventures</span>
               </span>
             </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600">
-              A diversified group shaping the future of transportation, infrastructure, and technology under one ecosystem.
-            </p>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600">{t.footer.description}</p>
           </div>
 
           {/* Cols 2 & 3 */}
-          {COLS.map((col) => (
+          {t.footer.cols.map((col) => (
             <div key={col.title}>
               <h4 className="text-xs uppercase tracking-[0.2em] text-slate-500">{col.title}</h4>
               <ul className="mt-5 space-y-3">
@@ -68,7 +67,7 @@ export default function Footer() {
                   <li key={label}>
                     <button
                       onClick={() => go(href)}
-                      data-testid={`footer-link-${label.replace(/\s+/g, "-").toLowerCase()}`}
+                      data-testid={`footer-link-${href.replace("#", "")}`}
                       className="text-sm text-slate-600 transition-colors hover:text-slate-900"
                     >
                       {label}
@@ -81,15 +80,15 @@ export default function Footer() {
 
           {/* Col 4 newsletter */}
           <div>
-            <h4 className="text-xs uppercase tracking-[0.2em] text-slate-500">Stay in the loop</h4>
-            <p className="mt-5 text-sm text-slate-600">{CONTACT_INFO.email}</p>
+            <h4 className="text-xs uppercase tracking-[0.2em] text-slate-500">{t.footer.newsletterTitle}</h4>
+            <p className="mt-5 text-sm text-slate-600">{t.contact.info.email}</p>
             <form onSubmit={subscribe} className="mt-4" data-testid="newsletter-form">
               <div className="flex items-center gap-2 rounded-full border border-slate-300 bg-white p-1.5 pl-4">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
+                  placeholder={t.footer.newsletterPh}
                   data-testid="newsletter-email"
                   className="flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
                 />
@@ -106,7 +105,7 @@ export default function Footer() {
               </div>
             </form>
             <div className="mt-5 flex gap-3">
-              {CONTACT_INFO.socials.map((s) => (
+              {SOCIALS.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
@@ -122,10 +121,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
-          <p className="text-xs text-slate-500">© {new Date().getFullYear()} Easy Ventures. All rights reserved.</p>
+          <p className="text-xs text-slate-500">© {yearStr} {t.footer.copyright}</p>
           <div className="flex gap-6 text-xs text-slate-500">
-            <button className="transition-colors hover:text-slate-900" data-testid="footer-privacy">Privacy Policy</button>
-            <button className="transition-colors hover:text-slate-900" data-testid="footer-terms">Terms & Conditions</button>
+            <button className="transition-colors hover:text-slate-900" data-testid="footer-privacy">{t.footer.privacy}</button>
+            <button className="transition-colors hover:text-slate-900" data-testid="footer-terms">{t.footer.terms}</button>
           </div>
         </div>
       </div>
