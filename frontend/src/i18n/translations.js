@@ -42,25 +42,22 @@ const bn = {
     overline: "আমাদের পোর্টফোলিও",
     titleBefore: "আগামীর শক্তি — ",
     titleAccent: "আমাদের ব্র্যান্ড",
-    intro: "তিনটি বিশেষায়িত প্রতিষ্ঠান, এক অভিন্ন উৎকর্ষের মানদণ্ড। প্রতিটি কার্ডে ট্যাপ করে জানুন প্রতিটি ব্র্যান্ডের গল্প।",
+    intro: "তিনটি বিশেষায়িত প্রতিষ্ঠান, এক অভিন্ন উৎকর্ষের মানদণ্ড। প্রতিটি কার্ডে ক্লিক করে ঘুরে আসুন সংশ্লিষ্ট ব্র্যান্ডের ওয়েবসাইট।",
     items: {
       "easy-truck": {
         name: "ইজি ট্রাক",
         tag: "লজিস্টিকস ও বহর",
-        description: "পরবর্তী প্রজন্মের লজিস্টিকস প্ল্যাটফর্ম — মহাদেশজুড়ে বহর, রুট ও রিয়েল-টাইম ডেলিভারি অপ্টিমাইজ করছে।",
-        points: ["বহর মনিটরিং", "রুট অপ্টিমাইজেশন", "লাইভ ট্র্যাকিং"],
+        description: "পরবর্তী প্রজন্মের লজিস্টিকস প্ল্যাটফর্ম — দেশজুড়ে ইন্ডাস্ট্রিয়াল সেক্টরে ট্রাক সাপ্লাই করছে ও বিজনেস টু বিজনেস লজিস্টিক ম্যানেজ করছে।",
       },
       "easy-brick": {
         name: "ইজি ব্রিক",
         tag: "নির্মাণ উপকরণ",
-        description: "অবকাঠামো-মানের উপকরণ ও বুদ্ধিমান সরবরাহ ব্যবস্থাপনা — শহর যারা গড়ছে, তাদের পাশে।",
-        points: ["উপকরণ ট্র্যাকিং", "সাইট সমন্বয়", "খরচ অপ্টিমাইজেশন"],
+        description: "ইট ও অন্যান্য অবকাঠামো-মানের উপকরণ সরবরাহ ব্যবস্থাপনা — শহর যারা গড়ছে, তাদের পাশে।",
       },
       "netro-systems": {
-        name: "নেট্রো সিস্টেমস",
+        name: "নেত্র সিস্টেমস",
         tag: "প্রযুক্তি ও সফটওয়্যার",
-        description: "গ্রুপের ডিজিটাল রূপান্তরের ইঞ্জিন — এন্টারপ্রাইজ স্কেলে সফটওয়্যার, ডেটা ও এআই তৈরি করছে।",
-        points: ["ক্লাউড প্ল্যাটফর্ম", "ডেটা ও এআই", "এন্টারপ্রাইজ সফটওয়্যার"],
+        description: "সফটওয়্যার ডেভেলপমেন্ট ও অটোমেশন এক্সপার্ট। ইন্ডাস্ট্রিয়াল সল্যুশন প্রভাইডার।",
       },
     },
   },
@@ -239,7 +236,7 @@ const bn = {
         links: [
           ["ইজি ট্রাক", "#easy-truck"],
           ["ইজি ব্রিক", "#easy-brick"],
-          ["নেট্রো সিস্টেমস", "#brands"],
+          ["নেত্র সিস্টেমস", "#brands"],
         ],
       },
     ],
@@ -291,25 +288,22 @@ const en = {
     overline: "Our Portfolio",
     titleBefore: "Brands Powering ",
     titleAccent: "Tomorrow",
-    intro: "Three specialised companies, one shared standard of excellence. Tap a card to explore what each brand delivers.",
+    intro: "Three specialised companies, one shared standard of excellence. Tap any card to open that brand's site.",
     items: {
       "easy-truck": {
         name: "Easy Truck",
         tag: "Logistics & Fleet",
-        description: "A next-generation logistics platform optimizing fleets, routes, and real-time delivery across continents.",
-        points: ["Fleet monitoring", "Route optimization", "Live tracking"],
+        description: "A next-generation logistics platform — supplying trucks to industrial sectors nationwide and managing B2B logistics end-to-end.",
       },
       "easy-brick": {
         name: "Easy Brick",
         tag: "Construction Materials",
-        description: "Infrastructure-grade materials and intelligent supply management powering the projects that shape cities.",
-        points: ["Material tracking", "Site coordination", "Cost optimization"],
+        description: "Supply management for bricks and other infrastructure-grade construction materials — standing with the people who build cities.",
       },
       "netro-systems": {
         name: "Netro Systems",
         tag: "Technology & Software",
-        description: "The digital transformation engine of the group — building software, data, and AI for enterprise scale.",
-        points: ["Cloud platforms", "Data & AI", "Enterprise software"],
+        description: "Software development and automation experts — an industrial solutions provider engineered for scale.",
       },
     },
   },
@@ -494,11 +488,11 @@ const en = {
   },
 };
 
-// Static, language-agnostic mapping — icons/colors/images shared across languages
+// Static, language-agnostic mapping — icons/colors/images/URLs shared across languages
 export const BRANDS_STATIC = [
-  { id: "easy-truck", icon: "Truck", image: IMAGES.truck, accent: "#0066FF" },
-  { id: "easy-brick", icon: "Building2", image: IMAGES.bridge, accent: "#FF5A00" },
-  { id: "netro-systems", icon: "Cpu", image: IMAGES.officeC, accent: "#0066FF" },
+  { id: "easy-truck", icon: "Truck", image: "/brand-easy-truck.jpg", accent: "#0066FF", url: "https://easytruck.xyz", bg: "#F7D95C" },
+  { id: "easy-brick", icon: "Building2", image: "/brand-easy-brick.jpg", accent: "#FF5A00", url: "https://easybricks.xyz", bg: "#F5A97A" },
+  { id: "netro-systems", icon: "Cpu", image: "/brand-netro.jpg", accent: "#0066FF", url: "https://netrosystems.com", bg: "#B7BEFB" },
 ];
 
 export const TRANSPORT_FEATURE_ICONS = ["Route", "Gauge", "Satellite", "BrainCircuit", "Leaf"];
