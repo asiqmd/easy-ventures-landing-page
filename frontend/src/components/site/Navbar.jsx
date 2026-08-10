@@ -6,14 +6,13 @@ import { useT } from "@/i18n/LanguageContext";
 import LangSwitch from "@/components/site/LangSwitch";
 
 const Logo = ({ onClick }) => (
-  <button onClick={onClick} data-testid="nav-logo" className="group flex items-center gap-2.5" data-cursor="hover">
-    <span className="relative flex h-8 w-8 items-center justify-center">
-      <span className="absolute inset-0 rotate-45 border border-slate-300 transition-colors group-hover:border-electric" />
-      <span className="h-2 w-2 bg-electric transition-transform group-hover:scale-150" />
-    </span>
-    <span className="font-display text-lg font-semibold tracking-tight text-slate-900">
-      Easy<span className="text-electric">Ventures</span>
-    </span>
+  <button onClick={onClick} data-testid="nav-logo" className="group flex items-center" data-cursor="hover" aria-label="Easy Ventures">
+    <img
+      src="/easy-ventures-logo.png"
+      alt="Easy Ventures"
+      className="h-9 w-auto transition-transform duration-300 group-hover:scale-[1.03] sm:h-10"
+      draggable="false"
+    />
   </button>
 );
 

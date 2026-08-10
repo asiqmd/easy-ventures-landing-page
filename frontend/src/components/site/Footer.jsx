@@ -46,15 +46,12 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Col 1 */}
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="relative flex h-8 w-8 items-center justify-center">
-                <span className="absolute inset-0 rotate-45 border border-slate-300" />
-                <span className="h-2 w-2 bg-electric" />
-              </span>
-              <span className="font-display text-lg font-semibold tracking-tight text-slate-900">
-                Easy<span className="text-electric">Ventures</span>
-              </span>
-            </div>
+            <img
+              src="/easy-ventures-logo.png"
+              alt="Easy Ventures"
+              className="h-10 w-auto"
+              draggable="false"
+            />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-600">{t.footer.description}</p>
           </div>
 
