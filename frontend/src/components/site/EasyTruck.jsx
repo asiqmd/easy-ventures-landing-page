@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useLenis } from "lenis/react";
 import { ArrowRight, Truck as TruckIcon, Activity } from "lucide-react";
 import { Icon, Overline, Reveal } from "@/components/site/primitives";
 import { TRUCK_FEATURE_ICONS } from "@/i18n/translations";
@@ -64,12 +63,7 @@ const TruckDashboard = ({ t }) => (
 );
 
 export default function EasyTruck() {
-  const lenis = useLenis();
   const t = useT();
-  const go = () => {
-    const el = document.querySelector("#contact");
-    if (el && lenis) lenis.scrollTo(el, { offset: -20, duration: 1.4 });
-  };
   return (
     <section id="easy-truck" className="relative overflow-hidden bg-white py-28 lg:py-36">
       <div className="pointer-events-none absolute right-0 top-20 h-96 w-96 rounded-full bg-electric/10 blur-[130px]" />
@@ -91,15 +85,17 @@ export default function EasyTruck() {
               </div>
             ))}
           </div>
-          <button
-            onClick={go}
+          <a
+            href="https://easytruck.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
             data-testid="discover-easy-truck-btn"
             data-cursor="hover"
-            className="group mt-8 flex items-center gap-2 rounded-full bg-electric px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue"
           >
             {t.easyTruck.cta}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          </a>
         </Reveal>
 
         <Reveal delay={0.1}>

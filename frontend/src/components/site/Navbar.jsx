@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, PhoneCall } from "lucide-react";
 import { useT } from "@/i18n/LanguageContext";
 import LangSwitch from "@/components/site/LangSwitch";
 
@@ -10,7 +10,7 @@ const Logo = ({ onClick }) => (
     <img
       src="/easy-ventures-logo.png"
       alt="Easy Ventures"
-      className="h-9 w-auto transition-transform duration-300 group-hover:scale-[1.03] sm:h-10"
+      className="h-8 w-auto transition-transform duration-300 group-hover:scale-[1.03] sm:h-10"
       draggable="false"
     />
   </button>
@@ -41,10 +41,10 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-        className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6 lg:px-10"
+        className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6 lg:px-10"
       >
         <div
-          className={`mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full px-5 py-3 transition-all duration-500 ${
+          className={`mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-full px-3.5 py-2.5 transition-all duration-500 sm:px-5 sm:py-3 ${
             scrolled ? "glass-strong" : "border border-transparent bg-white/70 backdrop-blur-md"
           }`}
         >
@@ -65,14 +65,15 @@ export default function Navbar() {
           </nav>
           <div className="flex items-center gap-3">
             <LangSwitch className="hidden sm:inline-flex" />
-            <button
-              onClick={() => go("#contact")}
+            <a
+              href="tel:+8801898923559"
               data-testid="nav-contact-btn"
               data-cursor="hover"
+              aria-label={`${t.common.contact}: 01898-923559`}
               className="hidden items-center gap-1.5 rounded-full bg-electric px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue sm:flex"
             >
-              {t.common.contact} <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
-            </button>
+              <PhoneCall className="h-4 w-4" strokeWidth={2} /> {t.common.contact}
+            </a>
             <button
               onClick={() => setOpen((v) => !v)}
               data-testid="nav-mobile-toggle"
@@ -93,7 +94,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-white/97 backdrop-blur-xl lg:hidden"
           >
-            <nav className="flex h-full flex-col items-start justify-center gap-6 px-10">
+            <nav className="flex h-full flex-col items-start justify-center gap-5 px-6 sm:gap-6 sm:px-10">
               {t.nav.map((l, i) => (
                 <motion.button
                   key={l.href}
@@ -102,11 +103,18 @@ export default function Navbar() {
                   transition={{ delay: 0.08 * i }}
                   onClick={() => go(l.href)}
                   data-testid={`mobile-link-${l.href.replace("#", "")}`}
-                  className="font-display text-4xl font-light tracking-tight text-slate-900"
+                  className="font-display text-3xl font-light tracking-tight text-slate-900 sm:text-4xl"
                 >
                   {l.label}
                 </motion.button>
               ))}
+              <a
+                href="tel:+8801898923559"
+                aria-label={`${t.common.contact}: 01898-923559`}
+                className="mt-2 flex items-center gap-3 rounded-full bg-electric px-6 py-3 text-base font-medium text-white"
+              >
+                <PhoneCall className="h-5 w-5" strokeWidth={2} /> {t.common.contact}
+              </a>
               <div className="mt-6"><LangSwitch /></div>
             </nav>
           </motion.div>

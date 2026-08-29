@@ -36,6 +36,7 @@
     body {
         @apply bg-[#F7F8FA] text-slate-900;
         margin: 0;
+        overflow-x: hidden;
         font-family: 'Manrope', 'Hind Siliguri', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -105,6 +106,14 @@
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #0066FF;
+}
+
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
 }
 
 /* Lenis */

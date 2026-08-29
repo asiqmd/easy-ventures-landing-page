@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { IMAGES } from "@/data/content";
-import { Icon, Overline, Reveal, Counter } from "@/components/site/primitives";
+import { Icon, Overline, Reveal } from "@/components/site/primitives";
 import { TRANSPORT_FEATURE_ICONS } from "@/i18n/translations";
 import { useT } from "@/i18n/LanguageContext";
 
@@ -57,18 +57,6 @@ export default function Transportation() {
               </motion.div>
             ))}
           </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {t.transport.stats.map((s) => (
-            <div key={s.label} className="rounded-3xl glass px-6 py-10 text-center" data-testid={`transport-stat-${s.label}`}>
-              <div className="font-display text-4xl font-light tracking-tight text-slate-900 lg:text-5xl">
-                <Counter value={s.value} suffix={s.suffix} decimals={s.decimals || 0} />
-              </div>
-              <div className="mt-2 text-xs uppercase tracking-wider text-slate-500">{s.label}</div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

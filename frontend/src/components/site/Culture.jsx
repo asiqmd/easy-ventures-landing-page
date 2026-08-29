@@ -21,10 +21,10 @@ export default function Culture() {
           </Reveal>
         </div>
 
-        <div className="grid auto-rows-[200px] grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid auto-rows-[190px] grid-flow-dense grid-cols-2 gap-4 md:auto-rows-[220px] md:grid-cols-4">
           {CULTURE_TILES.map((img, i) => (
             <motion.button
-              key={i}
+              key={img.src}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -38,6 +38,8 @@ export default function Culture() {
                 src={img.src}
                 alt={t.culture.alts[i] || ""}
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                style={{ objectPosition: img.position || "center" }}
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-slate-900/0 transition-colors group-hover:bg-slate-900/40" />
               <span className="absolute bottom-4 left-4 text-left text-sm font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">

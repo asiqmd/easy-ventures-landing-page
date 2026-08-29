@@ -44,13 +44,13 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" ref={ref} className="relative min-h-[100svh] w-full overflow-hidden bg-white pt-28">
+    <section id="hero" ref={ref} className="relative min-h-[100svh] w-full overflow-hidden bg-white pt-24 sm:pt-28">
       <div className="absolute inset-0 grid-lines opacity-60" />
       <div className="pointer-events-none absolute -top-24 right-0 h-[32rem] w-[32rem] rounded-full bg-electric/10 blur-[130px]" />
       <div className="pointer-events-none absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-safety/10 blur-[120px]" />
       <Particles />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-10 lg:pb-24 lg:pt-16">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 px-4 pb-12 sm:gap-12 sm:px-6 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-10 lg:pb-24 lg:pt-16">
         {/* Left: copy */}
         <div>
           <motion.div
@@ -90,13 +90,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.05, duration: 0.7 }}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
           >
             <button
               onClick={() => go("#brands")}
               data-testid="hero-explore-btn"
               data-cursor="hover"
-              className="group flex items-center gap-2 rounded-full bg-electric px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue"
+              className="group flex w-full items-center justify-center gap-2 rounded-full bg-electric px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#0052cc] hover:glow-blue sm:w-auto"
             >
               {t.hero.ctaExplore}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={2} />
@@ -105,7 +105,7 @@ export default function Hero() {
               onClick={() => go("#contact")}
               data-testid="hero-contact-btn"
               data-cursor="hover"
-              className="rounded-full border border-slate-300 px-7 py-3.5 text-sm font-medium text-slate-900 transition-all hover:border-slate-900 hover:bg-slate-50"
+              className="w-full rounded-full border border-slate-300 px-7 py-3.5 text-sm font-medium text-slate-900 transition-all hover:border-slate-900 hover:bg-slate-50 sm:w-auto"
             >
               {t.hero.ctaContact}
             </button>
@@ -123,7 +123,7 @@ export default function Hero() {
             <motion.img
               style={{ y: imgY, scale: imgScale }}
               src={IMAGES.heroParallax}
-              alt={t.hero.overline}
+              alt={t.hero.truckAlt}
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
@@ -131,11 +131,11 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-2xl bg-white/90 px-5 py-4 backdrop-blur-md"
+              className="absolute bottom-3 left-3 right-3 flex flex-col items-start gap-2 rounded-2xl bg-white/90 px-4 py-3 backdrop-blur-md sm:bottom-5 sm:left-5 sm:right-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-5 sm:py-4"
             >
               <div>
                 <div className="text-xs uppercase tracking-wider text-slate-500">{t.common.liveNetwork}</div>
-                <div className="font-display text-lg text-slate-900">{t.common.citiesConnectedShort}</div>
+                <div className="font-display text-base leading-snug text-slate-900 sm:text-lg">{t.common.citiesConnectedShort}</div>
               </div>
               <span className="flex items-center gap-2 text-xs font-medium text-emerald-600">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" /> {t.common.online}
@@ -150,12 +150,12 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.25, duration: 0.8 }}
-        className="relative z-10 mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-10"
+        className="relative z-10 mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-16 lg:px-10"
       >
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {t.hero.metrics.map((m) => (
-            <div key={m.label} className="rounded-2xl glass px-5 py-6" data-testid={`hero-metric-${m.label}`}>
-              <div className="font-display text-3xl font-light tracking-tight text-slate-900 lg:text-4xl">
+            <div key={m.label} className="rounded-2xl glass px-4 py-5 sm:px-5 sm:py-6" data-testid={`hero-metric-${m.label}`}>
+              <div className="font-display text-2xl font-light tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
                 <Counter value={m.value} suffix={m.suffix} />
               </div>
               <div className="mt-2 text-xs uppercase tracking-wider text-slate-500">{m.label}</div>

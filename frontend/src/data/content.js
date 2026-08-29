@@ -1,7 +1,6 @@
 // Language-agnostic asset URLs. All copy lives in /i18n/translations.js
 export const IMAGES = {
-  heroParallax:
-    "https://images.unsplash.com/photo-1771182253516-ffc7c1bee56e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBsb2dpc3RpY3MlMjB0cnVjayUyMGhpZ2h3YXklMjBzdW5zZXR8ZW58MHx8fHwxNzg1NDA3NjU5fDA&ixlib=rb-4.1.0&q=85",
+  heroParallax: "/bangladesh-truck-highway.png",
   truck:
     "https://images.unsplash.com/photo-1696110581291-16c49b7df77e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1Mjh8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBsb2dpc3RpY3MlMjB0cnVjayUyMGhpZ2h3YXklMjBzdW5zZXR8ZW58MHx8fHwxNzg1NDA3NjU5fDA&ixlib=rb-4.1.0&q=85",
   bridge:

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useLenis } from "lenis/react";
 import { ArrowRight, HardHat, TrendingUp } from "lucide-react";
 import { IMAGES } from "@/data/content";
 import { Icon, Overline, Reveal } from "@/components/site/primitives";
@@ -57,12 +56,7 @@ const BrickDashboard = ({ t }) => (
 );
 
 export default function EasyBrick() {
-  const lenis = useLenis();
   const t = useT();
-  const go = () => {
-    const el = document.querySelector("#contact");
-    if (el && lenis) lenis.scrollTo(el, { offset: -20, duration: 1.4 });
-  };
   return (
     <section id="easy-brick" className="relative overflow-hidden bg-[#EDF1F7] py-28 lg:py-36">
       <div className="pointer-events-none absolute left-0 bottom-10 h-96 w-96 rounded-full bg-safety/10 blur-[130px]" />
@@ -88,15 +82,17 @@ export default function EasyBrick() {
               </div>
             ))}
           </div>
-          <button
-            onClick={go}
+          <a
+            href="https://easybricks.xyz"
+            target="_blank"
+            rel="noopener noreferrer"
             data-testid="discover-easy-brick-btn"
             data-cursor="hover"
-            className="group mt-8 flex items-center gap-2 rounded-full bg-safety px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#e65100] hover:glow-orange"
+            className="group mt-8 inline-flex items-center gap-2 rounded-full bg-safety px-7 py-3.5 text-sm font-medium text-white transition-all hover:bg-[#e65100] hover:glow-orange"
           >
             {t.easyBrick.cta}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
+          </a>
         </Reveal>
       </div>
     </section>
